@@ -18,8 +18,6 @@ This model is then compared to an Azure AutoML run.
 **Though both approaches resulted in good performance, AutoML run resulted in better accuracy.**
 
 ## Scikit-learn Pipeline
-**Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
-
 **The pipeline architecture consists of the following in order:**
  * Instantiation of workspace from config
  * Creating compute cluster of _vm_size = Standard_D2_v2_ and _max_nodes=4_ using **ComputeTarget** and **AmlCompute** functions.
@@ -30,9 +28,9 @@ This model is then compared to an Azure AutoML run.
  * Define a _HyperDriveConfig_, which orchestrates the hyperparameter tuning. This function takes the previous run config, train script, policy, sampler and other arguments to parallely explore different hyperparameter setting.
  * Finally, submit the above hyper drive config as an _Experiment_.
 
-**I chose _RandomParameterSampling_ because, it can help find right hyperparameter quickly avoiding the computation cost of grid sampling. Also, the model performance is not significantly different to that of grid sampling.**
+I chose _RandomParameterSampling_ because, it can help find right hyperparameter quickly avoiding the computation cost of grid sampling. Also, the model performance is not significantly different to that of grid sampling.
 
-**The early termination policy chosen was _BanditPolicy_. This is used to better optimize computation resource when under budget constraints. In addition, this best suits for simpler binary classification tasks.**
+The early termination policy chosen was _BanditPolicy_. This is used to better optimize computation resource when under budget constraints. In addition, this best suits for simpler binary classification tasks.
 
 ## AutoML
 **AutoML generated a voting ensemble algorithm for the best run. It comprised of XGBoost and Random Trees with different feature engineering techniques.**
